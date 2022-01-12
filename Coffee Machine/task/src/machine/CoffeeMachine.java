@@ -45,7 +45,7 @@ public class CoffeeMachine {
     public static void chooseCoffee() {
 
         System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
-        menuStart= scanner.next();
+        menuStart = scanner.next();
 
         switch (menuStart) {
 
