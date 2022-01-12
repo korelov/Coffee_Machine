@@ -73,8 +73,7 @@ public class CoffeeMachine {
     public static void takeMoney() {
 
         System.out.printf("I gave you $%d%n", moneyHas);
-        moneyHas = moneyHas - moneyHas;
-        System.out.println();
+        moneyHas -= moneyHas;
         showCMStat();
     }
 
@@ -83,27 +82,26 @@ public class CoffeeMachine {
         int chooseNumber = scanner.nextInt();
         switch (chooseNumber) {
             case 1:
-                waterCoffeeMachineHas = waterCoffeeMachineHas - ESP_WATER;
-                milkCoffeeMachineHas = milkCoffeeMachineHas - ESP_MILK;
-                coffeeBeansCoffeeMachineHas = coffeeBeansCoffeeMachineHas - ESP_C_BEAN;
-                disposableCupsHas = disposableCupsHas - 1;
-                moneyHas = moneyHas + ESP_MONEY;
+                waterCoffeeMachineHas -= ESP_WATER;
+                coffeeBeansCoffeeMachineHas -= ESP_C_BEAN;
+                disposableCupsHas--;
+                moneyHas += ESP_MONEY;
                 showCMStat();
                 break;
             case 2:
-                waterCoffeeMachineHas = waterCoffeeMachineHas - LAT_WATER;
-                milkCoffeeMachineHas = milkCoffeeMachineHas - LAT_MILK;
-                coffeeBeansCoffeeMachineHas = coffeeBeansCoffeeMachineHas - LAT_C_BEAN;
-                disposableCupsHas = disposableCupsHas - 1;
-                moneyHas = moneyHas + LAT_MONEY;
+                waterCoffeeMachineHas -= LAT_WATER;
+                milkCoffeeMachineHas -= LAT_MILK;
+                coffeeBeansCoffeeMachineHas -= LAT_C_BEAN;
+                disposableCupsHas--;
+                moneyHas += LAT_MONEY;
                 showCMStat();
                 break;
             case 3:
-                waterCoffeeMachineHas = waterCoffeeMachineHas - CAP_WATER;
-                milkCoffeeMachineHas = milkCoffeeMachineHas - CAP_MILK;
-                coffeeBeansCoffeeMachineHas = coffeeBeansCoffeeMachineHas - CAP_C_BEAN;
-                disposableCupsHas = disposableCupsHas - 1;
-                moneyHas = moneyHas + CAP_MONEY;
+                waterCoffeeMachineHas -= CAP_WATER;
+                milkCoffeeMachineHas -= CAP_MILK;
+                coffeeBeansCoffeeMachineHas -= CAP_C_BEAN;
+                disposableCupsHas--;
+                moneyHas += CAP_MONEY;
                 showCMStat();
                 break;
         }
@@ -111,13 +109,13 @@ public class CoffeeMachine {
 
     public static void fillOption() {
         System.out.println("Write how many ml of water you want to add:");
-        waterCoffeeMachineHas = waterCoffeeMachineHas + scanner.nextInt();
+        waterCoffeeMachineHas += scanner.nextInt();
         System.out.println("Write how many ml of milk you want to add:");
-        milkCoffeeMachineHas = milkCoffeeMachineHas + scanner.nextInt();
+        milkCoffeeMachineHas += scanner.nextInt();
         System.out.println("Write how many grams of coffee beans you want to add:");
-        coffeeBeansCoffeeMachineHas = coffeeBeansCoffeeMachineHas + scanner.nextInt();
+        coffeeBeansCoffeeMachineHas += scanner.nextInt();
         System.out.println("Write how many disposable cups of coffee you want to add:");
-        disposableCupsHas = disposableCupsHas + scanner.nextInt();
+        disposableCupsHas += scanner.nextInt();
         showCMStat();
     }
 
