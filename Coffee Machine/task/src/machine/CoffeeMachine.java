@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class CoffeeMachine {
 
     static Scanner scanner = new Scanner(System.in);
+    static String menuStart;
 
     static final int ESP_WATER = 250;
     static final int ESP_MILK = 0;
@@ -21,123 +22,120 @@ public class CoffeeMachine {
     static final int CAP_C_BEAN = 12;
     static final int CAP_MONEY = 6;
 
-    static int waterCoffeeMachineHas = 400;
-    static int milkCoffeeMachineHas = 540;
-    static int coffeeBeansCoffeeMachineHas = 120;
+    static int waterCMHas = 400;
+    static int milkCMHas = 540;
+    static int coffeeBeansCMHas = 120;
     static int disposableCupsHas = 9;
     static int moneyHas = 550;
 
-    static int cupsOfCoffee;
-
-
-//    public static void estimateNumberServings() {
-//
-//        System.out.println("Write how many ml of water the coffee machine has:");
-//        waterCoffeeMachineHas = scanner.nextInt();
-//        System.out.println("Write how many ml of milk the coffee machine has:");
-//        milkCoffeeMachineHas = scanner.nextInt();
-//        System.out.println("Write how many grams of coffee beans the coffee machine has:");
-//        coffeeBeansCoffeeMachineHas = scanner.nextInt();
-//        System.out.println("Write how many cups of coffee you will need:");
-//        cupsOfCoffee = scanner.nextInt();
-//    }
-
     public static void showCMStat() {
         System.out.println("The coffee machine has:\n" +
-                "" + waterCoffeeMachineHas + " ml of water\n" +
-                "" + milkCoffeeMachineHas + " ml of milk\n" +
-                "" + coffeeBeansCoffeeMachineHas + " g of coffee beans\n" +
+                "" + waterCMHas + " ml of water\n" +
+                "" + milkCMHas + " ml of milk\n" +
+                "" + coffeeBeansCMHas + " g of coffee beans\n" +
                 "" + disposableCupsHas + " disposable cups\n" +
                 "$" + moneyHas + " of money\n");
     }
 
-//    public static void showAmountCoffee() {
-//
-//        int[] arr = {waterCoffeeMachineHas / WATER, milkCoffeeMachineHas / MILK, coffeeBeansCoffeeMachineHas / COFFEE_BEANS};
-//        int min = Integer.MAX_VALUE;
-//        for (int i = 0; i < arr.length; i++) {
-//            if (arr[i] < min) {
-//                min = arr[i];
-//            }
-//        }
-//        if (cupsOfCoffee == min) {
-//            System.out.println("Yes, I can make that amount of coffee");
-//        } else if (cupsOfCoffee > min) {
-//            System.out.printf("No, I can make only %d cup(s) of coffee%n", min);
-//        } else if (cupsOfCoffee < min) {
-//            System.out.printf("Yes, I can make that amount of coffee (and even %d more than that)%n", min - cupsOfCoffee);
-//        }
-//        startMenu();
-//    }
-
     public static void takeMoney() {
-
         System.out.printf("I gave you $%d%n", moneyHas);
         moneyHas -= moneyHas;
-        showCMStat();
     }
 
-    public static void chooseCoffe() {
-        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
-        int chooseNumber = scanner.nextInt();
-        switch (chooseNumber) {
-            case 1:
-                waterCoffeeMachineHas -= ESP_WATER;
-                coffeeBeansCoffeeMachineHas -= ESP_C_BEAN;
-                disposableCupsHas--;
-                moneyHas += ESP_MONEY;
-                showCMStat();
+    public static void chooseCoffee() {
+
+        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
+        menuStart= scanner.next();
+
+        switch (menuStart) {
+
+            case "1":
+                if (waterCMHas < ESP_WATER) {
+                    System.out.println("Sorry, not enough water!");
+                } else if (coffeeBeansCMHas < ESP_C_BEAN) {
+                    System.out.println("Sorry, not enough coffee beans!");
+                } else {
+                    System.out.println("I have enough resources, making you a coffee!");
+                    waterCMHas -= ESP_WATER;
+                    coffeeBeansCMHas -= ESP_C_BEAN;
+                    disposableCupsHas--;
+                    moneyHas += ESP_MONEY;
+                }
                 break;
-            case 2:
-                waterCoffeeMachineHas -= LAT_WATER;
-                milkCoffeeMachineHas -= LAT_MILK;
-                coffeeBeansCoffeeMachineHas -= LAT_C_BEAN;
-                disposableCupsHas--;
-                moneyHas += LAT_MONEY;
-                showCMStat();
+            case "2":
+                if (waterCMHas < LAT_WATER) {
+                    System.out.println("Sorry, not enough water!");
+                } else if (milkCMHas < LAT_MILK) {
+                    System.out.println("Sorry, not enough milk!");
+                } else if (coffeeBeansCMHas < LAT_C_BEAN) {
+                    System.out.println("Sorry, not enough coffee beans!");
+                } else {
+                    System.out.println("I have enough resources, making you a coffee!");
+                    waterCMHas -= LAT_WATER;
+                    milkCMHas -= LAT_MILK;
+                    coffeeBeansCMHas -= LAT_C_BEAN;
+                    disposableCupsHas--;
+                    moneyHas += LAT_MONEY;
+                }
                 break;
-            case 3:
-                waterCoffeeMachineHas -= CAP_WATER;
-                milkCoffeeMachineHas -= CAP_MILK;
-                coffeeBeansCoffeeMachineHas -= CAP_C_BEAN;
-                disposableCupsHas--;
-                moneyHas += CAP_MONEY;
-                showCMStat();
+            case "3":
+                if (waterCMHas < CAP_WATER) {
+                    System.out.println("Sorry, not enough water!");
+                } else if (milkCMHas < CAP_MILK) {
+                    System.out.println("Sorry, not enough milk!");
+                } else if (coffeeBeansCMHas < CAP_C_BEAN) {
+                    System.out.println("Sorry, not enough coffee beans!");
+                } else {
+                    System.out.println("I have enough resources, making you a coffee!");
+                    waterCMHas -= CAP_WATER;
+                    milkCMHas -= CAP_MILK;
+                    coffeeBeansCMHas -= CAP_C_BEAN;
+                    disposableCupsHas--;
+                    moneyHas += CAP_MONEY;
+                }
+                break;
+            case "back":
+                startMenu();
                 break;
         }
     }
 
     public static void fillOption() {
+
         System.out.println("Write how many ml of water you want to add:");
-        waterCoffeeMachineHas += scanner.nextInt();
+        waterCMHas += scanner.nextInt();
         System.out.println("Write how many ml of milk you want to add:");
-        milkCoffeeMachineHas += scanner.nextInt();
+        milkCMHas += scanner.nextInt();
         System.out.println("Write how many grams of coffee beans you want to add:");
-        coffeeBeansCoffeeMachineHas += scanner.nextInt();
+        coffeeBeansCMHas += scanner.nextInt();
         System.out.println("Write how many disposable cups of coffee you want to add:");
         disposableCupsHas += scanner.nextInt();
-        showCMStat();
     }
 
     public static void startMenu() {
-        showCMStat();
 
-        System.out.println("Write action (buy, fill, take):");
-        String menuStart = scanner.next();
-        if (!menuStart.equals("buy") && !menuStart.equals("fill") && !menuStart.equals("take") && !menuStart.equals("exit")) {
-            startMenu();
-        }
-        switch (menuStart) {
-            case "buy":
-                chooseCoffe();
-                break;
-            case "fill":
-                fillOption();
-                break;
-            case "take":
-                takeMoney();
-                break;
-        }
+        do {
+            System.out.println("Write action (buy, fill, take, remaining, exit):");
+            menuStart = scanner.next();
+
+            switch (menuStart) {
+                case "buy":
+                    chooseCoffee();
+                    break;
+                case "fill":
+                    fillOption();
+                    break;
+                case "take":
+                    takeMoney();
+                    break;
+                case "remaining":
+                    showCMStat();
+                    break;
+                case "exit":
+                    System.out.println();
+                    break;
+            }
+        } while (!menuStart.equals("exit"));
     }
 
     public static void main(String[] args) {
