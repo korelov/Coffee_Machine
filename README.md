@@ -2,7 +2,7 @@
 
 https://hyperskill.org/projects/33
 
-https://stepik.org/media/attachments/lesson/204875/demonstration.mp4
+![Coffee Machine](Coffee Machine) / ![](https://j.gifs.com/GRzzoQ.gif)
 
 Coffee Machine is a graduate project for track Java for Beginners.
 Graduate projects contain core topics for this track. You need to apply core topics in project 
