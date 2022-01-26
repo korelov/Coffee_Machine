@@ -132,7 +132,6 @@ public class CoffeeMachine {
                     showCMStat();
                     break;
                 case "exit":
-                    System.out.println();
                     break;
             }
         } while (!menuStart.equals("exit"));
